@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 1: HTML Basics</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            color: #fff;
+        }
+
+        body {
+            margin-top: 150px;
+            background-image: url('html.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        h1 {
+            display: inline-block;
+            margin: auto;
+            margin-top: -750px;
+            padding: 10px;
+            background-color: #f2f2f2;
+            color: black;
+            text-align: center;
+            font-size: 3rem;
+            width: 80%;
+            max-width: 1200px;
+            height: 50px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 20px;
+            border: 2px solid #333;
+            margin-bottom: 20px; 
+            font-weight: normal;
+            line-height: 1.2;
+        }
+        h1:hover {
+            background-color: rgb(100, 27, 122);
+            color: #f2f2f2;
+        }
+
+        p {
+            width: 70%;
+            max-width: 1000px;
+            padding: 10px 20px;
+            background-color: rgb(100, 27, 122);
+            font-size: 28px;
+            color: #f2f2f2;
+            border: 2px solid #333;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            text-align: center; /* Center align text within the paragraph */
+        }
+        p:hover {
+            background-color: #f2f2f2;
+            color: black;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 60%;
+            max-width: 1000px;
+            gap: 15px; /* Adds gap between the buttons */
+        }
+
+        .link-button {
+            display: block;
+            width: 100%; /* Make button take full width of the list item */
+            padding: 15px 30px;
+            background-color: #f2f2f2;
+            color: black;
+            font-size: 24px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .link-button:hover {
+            background-color: rgb(100, 27, 122);
+            color: #f2f2f2;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 10;
+        }
+
+        .video-container {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70%;
+            height: 70%;
+            background-color: #000;
+            z-index: 20;
+        }
+
+        .close-btn {
+            display: none;
+            position: fixed;
+            top: 20px;
+            right: 40px;
+            cursor: pointer;
+            color: white;
+            font-size: 30px;
+            z-index: 30;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Module 1: HTML Basics</h1>
+    <p>HyperText Markup Language (HTML) is the basic scripting language used by web browsers to
+        render pages on the world wide web. HyperText allows a user to click a link and be 
+        redirected to a new page referenced by that link.</p>
+    <div class="container">
+        <ul>
+            <li><button class="link-button" onclick="playVideo('l1EssrLxt7E')">1. Introduction to HTML</button></li>
+            <li><button class="link-button" onclick="playVideo('Rek0NWPCNOc')">2. Basics of HTML</button></li>
+            <li><button class="link-button" onclick="playVideo('2QR11oDukn4')">3. Advanced Concept of HTML</button></li>
+            <li><button class="link-button" onclick="playVideo('jRAZlTEZi9I')">4. HTML Elements and Attributes</button></li>
+            <li><button class="link-button" onclick="playVideo('jRAZlTEZi9I')">5. Structure of a Project</button></li>
+        </ul>
+    </div>
+
+    <div class="overlay" onclick="closeVideo()"></div>
+    <span class="close-btn" onclick="closeVideo()">X</span>
+    <div class="video-container">
+        <iframe id="videoFrame" src="" allowfullscreen></iframe>
+    </div>
+
+    <script>
+        function playVideo(videoId) {
+            document.getElementById('videoFrame').src = "https://www.youtube.com/embed/" + videoId;
+            document.querySelector('.overlay').style.display = 'block';
+            document.querySelector('.video-container').style.display = 'block';
+            document.querySelector('.close-btn').style.display = 'block';
+        }
+
+        function closeVideo() {
+            document.getElementById('videoFrame').src = "";
+            document.querySelector('.overlay').style.display = 'none';
+            document.querySelector('.video-container').style.display = 'none';
+            document.querySelector('.close-btn').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
